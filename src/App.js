@@ -3,10 +3,10 @@ import './styles.scss';
 import React, { useState } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import FirstStep from "./components/FirstStep";
-import Header from "./components/Header";
 import SecondStep from "./components/SecondStep";
 import ThirdStep from "./components/ThirdStep";
 import FinalStep from './components/FinalStep';
+import Welcome from './components/Welcome';
 
 
 const App = () => {
@@ -18,15 +18,16 @@ const App = () => {
 
   console.log(user)
 
-  console.log(user.sign[0].name);
-
   return (
     <BrowserRouter>
       <div className="container">
-        <Header />
         <Routes>
-          <Route
+        <Route
             path="/"
+            element={<Welcome/>}
+          />
+          <Route
+            path="/first"
             element={<FirstStep user={user} updateUser={updateUser} />}
           />
           <Route

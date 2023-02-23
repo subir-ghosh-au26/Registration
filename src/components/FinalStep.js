@@ -3,8 +3,6 @@ import { useForm } from "react-hook-form";
 import { Form, Button } from "react-bootstrap";
 import { motion } from "framer-motion";
 
- 
-
 
 const FinalStep = (props) => {
   const { user } = props;
@@ -65,7 +63,7 @@ const FinalStep = (props) => {
           )}
         </Form.Group>
 
-        <Button variant="primary" type="submit" onClick={alert('Successfully Registered')}>
+        <Button variant="primary" type="submit">
           Submit
         </Button>
       </motion.div>
