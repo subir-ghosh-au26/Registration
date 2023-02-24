@@ -7,24 +7,28 @@ import SecondStep from "./components/SecondStep";
 import ThirdStep from "./components/ThirdStep";
 import FinalStep from './components/FinalStep';
 import Welcome from './components/Welcome';
-
+import Login from './components/Login';
 
 const App = () => {
   const [user, setUser] = useState({});
+
+  
   
   const updateUser = (data) => {
     setUser((prevUser) => ({ ...prevUser, ...data }));
   };
-
-  console.log(user)
-
-  return (
+  
+    return (
     <BrowserRouter>
       <div className="container">
         <Routes>
         <Route
             path="/"
             element={<Welcome/>}
+          />
+          <Route
+            path="/login"
+            element={<Login/>}
           />
           <Route
             path="/first"

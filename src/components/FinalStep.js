@@ -1,10 +1,18 @@
 import React from "react";
+import Swal from 'sweetalert2'
 import { useForm } from "react-hook-form";
 import { Form, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import Header from "./Header";
+import Progress from "./Progress";
+
+
 
 
 const FinalStep = (props) => {
+
+  const navigate = useNavigate();
   const { user } = props;
   const {
     register,
@@ -20,12 +28,36 @@ const FinalStep = (props) => {
 
   const onSubmit = (data) => {
     props.updateUser(data);
-
-
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Saved!',
+          'You have successfully registered.',
+          'success'
+        )
+        navigate("/");
+      }
+      else{
+        navigate('/final')
+      }
+    });
   };
-  
+
+  console.log(user)
+
 
   return (
+    <>
+    <Header/>
+    <Progress/>
     <Form className="input-form" onSubmit={handleSubmit(onSubmit)}>
       <motion.div
         className="col-md-6 offset-md-3"
@@ -68,6 +100,7 @@ const FinalStep = (props) => {
         </Button>
       </motion.div>
     </Form>
+    </>
   );
 };
 

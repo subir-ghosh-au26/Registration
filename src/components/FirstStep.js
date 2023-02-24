@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import { Form, Button } from "react-bootstrap";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import Header from "./Header";
+import Progress from "./Progress";
 
 const FirstStep = (props) => {
   const navigate = useNavigate();
@@ -27,6 +29,9 @@ const FirstStep = (props) => {
   };
 
   return (
+    <>
+    <Header/>
+    <Progress/>
     <Form className="input-form" onSubmit={handleSubmit(onSubmit)}>
       <motion.div
         className="col-md-6 offset-md-3"
@@ -136,6 +141,7 @@ const FirstStep = (props) => {
         </Button>
       </motion.div>
     </Form>
+    </>
   );
 };
 

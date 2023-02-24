@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import { Form, Button } from "react-bootstrap";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import Header from "./Header";
+import Progress from "./Progress";
 
 const ThirdStep = (props) => {
     const navigate = useNavigate();
@@ -28,6 +30,9 @@ const ThirdStep = (props) => {
   };
 
   return (
+    <>
+    <Header/>
+    <Progress/>
     <Form className="input-form" onSubmit={handleSubmit(onSubmit)}>
       <motion.div
         className="col-md-6 offset-md-3"
@@ -37,9 +42,9 @@ const ThirdStep = (props) => {
       >
         <Form.Group controlId="first_name">
           <Form.Label>Gender: </Form.Label>
-          <input {...register("Gender", { required: true })} type="radio" value="Male" />Male
-      <input {...register("Gender", { required: true })} type="radio" value="Female" />Female
-      <input {...register("Gender", { required: true })} type="radio" value="Other" />Other
+          <input className="form-check-input" {...register("Gender", { required: true })} type="radio" value="Male" />Male
+      <input className="form-check-input" {...register("Gender", { required: true })} type="radio" value="Female" />Female
+      <input className="form-check-input" {...register("Gender", { required: true })} type="radio" value="Other" />Other
           {errors.gender && (
             <p className="errorMsg">{errors.gender.message}</p>
           )}
@@ -67,7 +72,7 @@ const ThirdStep = (props) => {
 
         <Form.Group controlId="first_name">
           <Form.Label>Official Address</Form.Label><br/>
-          <textarea {...register("Official_Address", {required: true, maxLength: 1000})} />
+          <textarea className="form-control" rows="5" {...register("Official_Address", {required: true, maxLength: 1000})}/>
           {errors.Official_Address && (
             <p className="errorMsg">{errors.Official_Address.message}</p>
           )}
@@ -76,7 +81,7 @@ const ThirdStep = (props) => {
 
         <Form.Group controlId="first_name">
           <Form.Label>Residential Address</Form.Label><br/>
-          <textarea {...register("Residential_Address", {required: true, maxLength: 1000})} />
+          <textarea className="form-control" rows="5"{...register("Residential_Address", {required: true, maxLength: 1000})} />
           {errors.Residential_Address && (
             <p className="errorMsg">{errors.Residential_Address.message}</p>
           )}
@@ -87,6 +92,7 @@ const ThirdStep = (props) => {
         </Button>
       </motion.div>
     </Form>
+    </>
   );
 };
 
